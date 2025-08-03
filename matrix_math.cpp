@@ -1,7 +1,6 @@
 using namespace std;
 #include <vector>
 #include <string>
-#include <format>
 
 #include "matrix_math.h"
 
@@ -9,14 +8,14 @@ MatrixMath::MatrixMath() {};
 
 
 vector<double> MatrixMath::get_column(const vector<vector<double>> A, int index){
-    if (index > A.size()){
+    if (index > A.size() || A.empty() || index < 0){
         throw invalid_argument("get_column error: index out of bounds");
     }
 
     vector<double> column;
 
-    for (int i = 0; i < A[0].size(), i++){
-        column.push_back(A[index][i]);
+    for (int i = 0; i < A.size(); i++){
+        column.push_back(A[i][index]);
     }
     return column;
 };
@@ -40,11 +39,11 @@ vector<vector<double>> MatrixMath::matrix_add(const vector<vector<double>> A, co
         throw invalid_argument("matrix add error: the two matrices must have the same dimensions.");
     }
 
-    vector<vector<double>> result_matrix(A.size(), vector<double>(A[0].size(), 0));
+    vector<vector<double>> result_matrix = A;
 
     for (int i = 0; i < A.size(); i++){
         for (int j = 0; j < A[0].size(); j++){
-            result_matrix[i][j] = A[i][j] + B[i][j];
+            result_matrix[i][j] += B[i][j];
         }
     }
     return result_matrix;
