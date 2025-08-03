@@ -5,6 +5,5 @@ class Neuron {
 
 private:
     double bias;
-    vector<
     
 };
