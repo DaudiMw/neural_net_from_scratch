@@ -6,6 +6,7 @@ class Neuron {
     Neuron(ActivationType activation_func, vector<double> input, vector<double> weights, double bias);
     Neuron(ActivationType activation_func, vector<vector<double>> input2d, vector<double> weights, double bias);
     float activate();
+    float activate2d();
 private:
     double m_bias;
     vector<double> m_weights;
