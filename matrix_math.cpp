@@ -64,7 +64,6 @@ vector<vector<double>> MatrixMath::matrix_sub(const vector<vector<double>> A, co
 
 };
 
-
 vector<vector<double>> MatrixMath::matrix_mult(const vector<vector<double>> A, const vector<vector<double>> B){
     if (A[0].size() != B.size()){
         throw invalid_argument("matrix math error: incompatible dimensions - the number of columns in the first matrix must match the number of rows in the second matrix.");
@@ -80,4 +79,17 @@ vector<vector<double>> MatrixMath::matrix_mult(const vector<vector<double>> A, c
 
     return result_matrix;
     
+};
+
+vector<vector<double>> MatrixMath::transpose(const vector<vector<double>> A){
+    vector<double> column;
+    vector<vector<double>> A_transposed(A[0].size(), vector<double>(A.size(), 0));
+
+    for (int i = 0; i < A[0].size(); i++){
+        column = get_column(A, i);
+        for (int j = 0; j < column.size(); j++){
+            A_transposed[column[j]][i];
+        }
+    }
+    return A_transposed;
 };
